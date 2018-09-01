@@ -7,7 +7,7 @@
     "dev": "concurrently \"nodemon ./bin/www\" \"cd client && npm start\"",
     "start": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
