@@ -39,7 +39,7 @@ const operatorsAliases = {
 
 module.exports = {
   "production": {
-    "use_env_variable": "DATABASE_URL"
+    "use_env_variable": process.env.DATABASE_URL
   },
   "test": {
     "username": "jasonlalor",

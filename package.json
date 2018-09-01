@@ -1,12 +1,13 @@
 {
   "name": "dollarvan-reviews",
   "version": "1.0.0",
-  "description": "",
+  "description": "RESTful API for DollarVan.nyc",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently \"nodemon ./bin/www\" \"cd client && npm start\"",
     "start": "nodemon ./bin/www",
-    "start:dev": "nodemon ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,11 @@
   },
   "homepage": "https://github.com/dadapowell/dollarvan-reviews#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
     "pg": "^7.4.3",
@@ -28,6 +32,7 @@
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
+    "concurrently": "^4.0.1",
     "nodemon": "^1.17.5"
   }
 }

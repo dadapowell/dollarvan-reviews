@@ -28,7 +28,8 @@ module.exports = {
             .then(van => {
                 if (!van){
                     return res.status(404).send({
-                        message: "Van not found."
+                        message: "Van not found.",
+                        Reviews: []
                     });
                 }
                 return res.status(200).send(van);
@@ -48,7 +49,8 @@ module.exports = {
             .then(van => {
                 if (!van){
                     return res.status(404).send({
-                        message: "Van not found."
+                        message: "Van not found.",
+                        Reviews: []
                     });
                 }
                 return res.status(200).send(van);

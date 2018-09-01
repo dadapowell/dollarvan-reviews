@@ -1,0 +1,246 @@
+body {
+	font-family: "Rubik", Helvetica, sans-serif;
+	font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 700;
+}
+a {
+    color: #300075;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+    color: #000;
+}
+.home {
+/*    padding-top: 150px;*/
+}
+.home h1 {
+    color: #fff;
+    margin-top: 125px;
+}
+.home h2 {
+    color: #9474b4;
+}
+
+main {
+
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #9474b4;
+}
+.navbar-inverse {
+    background-color: #300075;
+}
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+header {
+    padding-top: 150px;
+    padding-bottom: 500px;
+}
+footer {
+    padding-top: 30px;
+    background-color: #300075;
+    color: #9474b4;
+}
+main {
+    background-color: #fff;
+}
+article {
+
+}
+
+.safety li {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.safety h3 {
+    margin-bottom: 10px;
+}
+
+
+/*
+BOOTSTRAP OVERRIDES
+*/
+.img-thumbnail {
+    background-color: transparent;
+    border: 1px solid #9474b4;
+    border-radius: 0;
+}
+.text-center>img {
+    margin: 0 auto;
+}
+.form-control {
+    max-width: 100%;
+}
+.translate {
+	color: #999;
+}
+
+.features .row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.jumbotron {
+    background-color: transparent;
+    margin-bottom: 0;
+}
+
+.about {
+    padding-bottom: 250px;
+}
+
+.secondary {
+    background-color: #300075;
+    color: #fff;
+    padding-top: 25px;
+    padding-bottom: 75px;
+}
+.secondary p, .secondary li {
+    color: #9474b4;
+}
+.secondary a {
+    color: #fff;
+}
+
+.app-blue {
+    background-color: #5498f6;
+    color: #fff;
+    padding-top: 25px;
+    padding-bottom: 75px;
+}
+
+.app-dark-gray {
+    background-color: #9b9b9b;
+}
+
+.app-light-gray {
+  background-color: #efefef;
+}
+
+/*
+
+VIDEO BACKGROUND
+
+*/
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ 
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+/*
+.about video { background: url('../img/bg-index.jpg') no-repeat; }
+.maps video { background: url('../img/bg-maps.jpg') no-repeat; }
+
+#about { background: url('../img/bg-index.jpg') no-repeat; }
+#maps { background: url('../img/bg-maps.jpg') no-repeat; }
+*/
+
+.maps.container {
+/*    padding-top: 75px;*/
+    padding-bottom: 50px;
+}
+
+.img-prototype {
+    cursor: pointer;
+}
+.download-maps {
+    padding-bottom: 35px;
+}
+
+.research-sidebar img {
+    margin-bottom: 12px;
+}
+
+
+/*
+VIDEO
+*/
+.embed-container { 
+    position: relative; 
+    padding-bottom: 56.25%; 
+    height: 0; 
+    overflow: hidden; 
+    max-width: 100%; 
+} 
+.embed-container iframe, .embed-container object, .embed-container embed { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+}
+
+/*
+BUTTONS
+*/
+
+.btn-lg {
+    border-radius: 24px;
+    padding: 15px 30px;
+    margin-top: 15px;
+}
+#prototype .btn-lg {
+    min-width: 215px;
+}
+.btn-primary {
+    background-color: transparent;
+    border-color: #300075;
+    color: #300075;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary:focus {
+    background-color: #300075 !important;
+    border-color: #300075 !important;
+    color: #fff;
+    outline: none;
+}
+.btn-default {
+    background-color: #300075;
+    border-color: #300075;
+    color: #fff;
+    width: 100%;
+}
+.btn-default:hover, .btn-default:active, .btn-default.active, .btn-default:focus {
+    background-color: transparent !important;
+    border-color: #300075 !important;
+    color: #300075;
+    outline: none;
+}
+
+#mc_embed_signup{
+    background:#fff; 
+    clear:left; 
+    font:14px "Rubik",Helvetica,Arial,sans-serif; 
+}
+
+@media screen and (min-width: 768px){
+    #maps, #about {
+        padding-top: 150px;
+    }
+    .maps.container {
+        padding-top: 75px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    iframe {
+        width: 100%;
+    }
+}
