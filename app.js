@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express       = require('express');
+const path          = require('path');
 const logger        = require('morgan');
 const bodyParser    = require('body-parser');
 
@@ -26,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
 
-  // Setup a default catch-all route that sends back a welcome message in JSON format
+  // Handle React routing, return all requests to React app
   app.get('*', (req, res) => res.status(200).sendFile(path.join(__dirname, 'client/build', 'index.html')));
 }
 
