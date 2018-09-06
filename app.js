@@ -24,13 +24,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 require('./server/routes')(app);
 
 if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client/build')));
   
-  // Handle React routing, return all requests to React app
-  app.get('*', (req, res) => res.status(200).sendFile(path.join(__dirname, 'client/build', 'index.html')));
+    // Handle React routing, return all requests to React app
+    app.get('*', (req, res) => res.status(200).sendFile(path.join(__dirname, 'client/build', 'index.html')));
 } else {
-  app.get('*', (req, res) => res.status(200).send({message: "good to go"}));
+    app.get('*', (req, res) => res.status(200).send({message: "good to go"}));
 }
 
 

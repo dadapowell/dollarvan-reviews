@@ -14,6 +14,11 @@ a:hover {
     text-decoration: none;
     color: #000;
 }
+
+.hidden {
+	display: none;
+}
+
 .home {
 /*    padding-top: 150px;*/
 }
@@ -130,7 +135,7 @@ BOOTSTRAP OVERRIDES
 VIDEO BACKGROUND
 
 */
-video { 
+video {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -140,7 +145,7 @@ video {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
- 
+
     background-size: cover;
     transition: 1s opacity;
 }
@@ -173,29 +178,34 @@ video {
 /*
 VIDEO
 */
-.embed-container { 
-    position: relative; 
-    padding-bottom: 56.25%; 
-    height: 0; 
-    overflow: hidden; 
-    max-width: 100%; 
-} 
-.embed-container iframe, .embed-container object, .embed-container embed { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+.embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /*
 BUTTONS
 */
-
+.btn, .btn:focus, .btn:active {
+	outline: none;
+}
 .btn-lg {
     border-radius: 24px;
     padding: 15px 30px;
     margin-top: 15px;
+		background-color: #300075;
+		color: #fff;
+		outline: none;
 }
 #prototype .btn-lg {
     min-width: 215px;
@@ -217,17 +227,18 @@ BUTTONS
     color: #fff;
     width: 100%;
 }
-.btn-default:hover, .btn-default:active, .btn-default.active, .btn-default:focus {
+.btn-default:hover, .btn-default:active, .btn-default.active, .btn-default:focus,
+.btn-lg:hover, .btn-lg:active, .btn-lg:focus, .btn-lg.active {
     background-color: transparent !important;
     border-color: #300075 !important;
     color: #300075;
-    outline: none;
+    outline: none !important;
 }
 
 #mc_embed_signup{
-    background:#fff; 
-    clear:left; 
-    font:14px "Rubik",Helvetica,Arial,sans-serif; 
+    background:#fff;
+    clear:left;
+    font:14px "Rubik",Helvetica,Arial,sans-serif;
 }
 
 @media screen and (min-width: 768px){

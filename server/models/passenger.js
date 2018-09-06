@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    
+
   var Passenger = sequelize.define('Passenger', {
     username: {
         type: DataTypes.STRING,
@@ -28,13 +28,13 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4
     }
   }, {});
-    
+
   Passenger.associate = function(models) {
-      Passenger.hasMany(models.Review, {
+    Passenger.hasMany(models.Review, {
         foreignKey: 'passengerID',
         onDelete: 'CASCADE'
     });
   };
-    
+
   return Passenger;
 };

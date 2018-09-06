@@ -1,0 +1,91 @@
+.star-rating {
+  font-family: 'Font Awesome 5 Free';
+  margin: 12px auto;
+}
+.star-rating > fieldset {
+  border: none;
+  display: inline-block;
+}
+.star-rating > fieldset:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+.star-rating > fieldset:not(:checked) > label {
+  float: right;
+  width: 1.2em;
+  padding: 0 0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  color: #efefef;
+}
+.star-rating > fieldset:not(:checked) > label:before {
+  content: '\f005  ';
+}
+.star-rating > fieldset:not(:checked) > label:hover,
+.star-rating > fieldset:not(:checked) > label:hover ~ label {
+  color: #300075;
+  /* text-shadow: 0 0 1px #300075; */
+}
+.star-rating > fieldset:not(:checked) > label:hover:before,
+.star-rating > fieldset:not(:checked) > label:hover ~ label:before {
+  content: '\f005  ';
+}
+.star-rating > fieldset > input:checked ~ label:before {
+  content: '\f005  ';
+  color: #300075;
+}
+.star-rating > fieldset > label:active {
+  position: relative;
+  top: 2px;
+}
+
+.checkbox {
+    display: inline-block;
+}
+
+.checkbox input {
+  /* opacity: 0; */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+.checkbox input[type="checkbox"] + label {
+  padding: 4px 10px;
+  background: #efe6fd;
+  border: 1px solid #a97ef8;
+  display: inline-block;
+  color: #a97ef8;
+  font-size: 0.8em;
+  margin: 0 4px 8px 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.checkbox input[type="checkbox"]:checked + label {
+  padding: 4px 10px;
+  background: #300075;
+  border: 1px solid #300075;
+  display: inline-block;
+  color: #fff;
+  font-size: 0.8em;
+  margin: 0 4px 8px 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.checkbox input[type="checkbox"]:focus + label {
+  border: 1px solid #300075;
+}
+
+textarea {
+  /* width: 100%; */
+  padding: 6px 6px 10px;
+  border-color: #999999;
+  resize: none;
+  overflow: auto;
+  transition: border-color 0.15s;
+  font-size: 0.95em;
+}
+textarea:focus {
+  border-color: #300075;
+  transition: border-color 0.15s;
+}
