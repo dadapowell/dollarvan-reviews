@@ -199,14 +199,15 @@ BUTTONS
 .btn, .btn:focus, .btn:active {
 	outline: none;
 }
-.btn-lg {
+.btn-lg, .btn-lg:active, .btn-lg:focus, .btn-lg.active {
     border-radius: 24px;
     padding: 15px 30px;
     margin-top: 15px;
-		background-color: #300075;
-		color: #fff;
-		outline: none;
+	background-color: #300075;
+	color: #fff;
+	outline: none;
 }
+
 #prototype .btn-lg {
     min-width: 215px;
 }
@@ -228,11 +229,21 @@ BUTTONS
     width: 100%;
 }
 .btn-default:hover, .btn-default:active, .btn-default.active, .btn-default:focus,
-.btn-lg:hover, .btn-lg:active, .btn-lg:focus, .btn-lg.active {
-    background-color: transparent !important;
+.btn-lg:hover {
+    background-color: #3f12a3 !important;
     border-color: #300075 !important;
-    color: #300075;
     outline: none !important;
+	color: #fff;
+}
+
+.btn-lg, .btn-lg:hover {
+	/* box-shadow: 0px 0px 4px 0px #808080; */
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+.btn-lg:active, .btn-lg:focus, .btn-lg.active {
+	/* box-shadow: 0px 0px 8px 0px #808080; */
+	box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+	background-color: #300075 !important;
 }
 
 #mc_embed_signup{

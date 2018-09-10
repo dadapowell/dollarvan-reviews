@@ -1,0 +1,29 @@
+input[type="email"] {
+    padding: 8px 10px 12px;
+    width: 100%;
+    font-size: 1.3em;
+    color: #999;
+    border: 1px solid #c5c6c8;
+    outline: none;
+    background-color: #dadada;
+    border-radius: 8px;
+    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s;
+    /* box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08); */
+}
+
+input[type="email"]:focus {
+    color: #300075;
+    border: 1px solid #300075;
+    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s;
+    outline: none;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+#Login {
+    border-bottom: 0;
+}
+#Login h6 {
+    color: #b1b1b1;
+}
+#Login p {
+    color: #5a5c60;
+}

@@ -8,8 +8,14 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4
       },
+      sessionID: {
+        type: Sequelize.UUID,
+        references: {
+            model: 'Sessions',
+            key: 'id'
+        }
+      },
       username: {
-        allowNull: false,
         type: Sequelize.STRING,
         unique: true
       },

@@ -26,13 +26,18 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         allowNull: false,
         defaultValue: DataTypes.UUIDV4
-    }
+    },
+
   }, {});
 
   Passenger.associate = function(models) {
     Passenger.hasMany(models.Review, {
         foreignKey: 'passengerID',
         onDelete: 'CASCADE'
+    });
+    Passenger.belongsTo(models.Session, {
+        foreignKey: "sessionID",
+        onDelete: "CASCADE"
     });
   };
 

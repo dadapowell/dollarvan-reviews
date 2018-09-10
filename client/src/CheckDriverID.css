@@ -1,0 +1,40 @@
+.pincode-input-container {
+    width: 100% !important;
+    padding: 0 !important;
+    height: 125px;
+}
+
+.pincode-input-container .pincode-input-text {
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center;
+    border: 2px solid #fff !important;
+    background: #dadada !important;
+    width: 25% !important;
+    height: 80% !important;
+    border-radius: 4px;
+    font-size: 3em;
+    color: #999;
+}
+.pincode-input-text:nth-of-type(1),
+.pincode-input-text:nth-of-type(2),
+.pincode-input-text:nth-of-type(3) {
+    margin-left: 0 !important;
+}
+.pincode-input-text:nth-of-type(4) {
+    margin-right: 0 !important;
+}
+.pincode-input-container .pincode-input-text:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+section {
+    border: 0;
+}
+section:nth-of-type(1) {
+    padding-bottom: 0;
+}
+section h6.subtitle {
+    color: #b1b1b1;
+}

@@ -1,0 +1,11 @@
+#app-blue-gray {
+    background-image: url('dv-van-bg.jpg');
+    background-repeat: repeat-x;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+.App .app-blue {
+    border: 0;
+    padding-bottom: 0;
+}

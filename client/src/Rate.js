@@ -4,14 +4,15 @@ import AppHeader from './AppHeader';
 import DriverInfo from './DriverInfo';
 import './Rate.css';
 
-/* TO DO: replace the logo */
-import logo from './logo.svg';
+/* replace the logo */
+import logo from './dollarvan-logo-icon.png';
 
 class Rate extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            isLoggedIn: false,
             response: {"Reviews": []},
             star_rating: 0,
             short_review: [],
@@ -87,7 +88,7 @@ class Rate extends Component {
 
     componentDidMount() {
 
-        if (this.props.match.params.driverId) {
+        if (this.props.match.params.driverId && this.state.isLoggedIn) {
             fetch('/api/vans/dvid/' + this.props.match.params.driverId)
                 .then(res => {
                     if (res.status === 404) {
@@ -105,61 +106,65 @@ class Rate extends Component {
     }
 
     render() {
-        if (this.state.redirect) {
+        if (!this.state.isLoggedIn) {
+            return <Redirect push to="/" />;
+        } else if (this.state.redirect) {
             return <Redirect push to="/success" />;
+        } else {
+            const response = this.state.response;
+
+            return (
+                <div className="App">
+                    <AppHeader />
+                    <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
+                    <section>
+                        <div className="row container">
+                            <div className="col-sm-6">
+                                <h6>Driver Rating</h6>
+                                <p>Leave a rating below:</p>
+                                <div className="star-rating">
+                                  <fieldset>
+                                      <input type="radio" id="star5" name="star_rating" value="5" onChange={this.handleInputChange} /><label htmlFor="star5" title="Outstanding">5 stars</label>
+                                      <input type="radio" id="star4" name="star_rating" value="4" onChange={this.handleInputChange} /><label htmlFor="star4" title="Very good">4 stars</label>
+                                      <input type="radio" id="star3" name="star_rating" value="3" onChange={this.handleInputChange} /><label htmlFor="star3" title="Good">3 stars</label>
+                                      <input type="radio" id="star2" name="star_rating" value="2" onChange={this.handleInputChange} /><label htmlFor="star2" title="Bad">2 stars</label>
+                                      <input type="radio" id="star1" name="star_rating" value="1" onChange={this.handleInputChange} /><label htmlFor="star1" title="Very bad">1 stars</label>
+                                  </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div className="row container">
+                            <div className="col-sm-12">
+                                <h6>What did you love about the ride?</h6>
+                                <div className="checkbox">
+                                    <input type="checkbox" id="1" value="Friendly driver" name="friendly_driver" onChange={this.handleInputChange} /><label htmlFor="1">Friendly driver</label>
+                                    <input type="checkbox" id="2" value="Safe ride" name="safe_ride" onChange={this.handleInputChange} /><label htmlFor="2">Safe ride</label>
+                                    <input type="checkbox" id="3" value="Great van" name="great_van" onChange={this.handleInputChange} /><label htmlFor="3">Great van</label>
+                                    <input type="checkbox" id="4" value="Efficient" name="efficient" onChange={this.handleInputChange} /><label htmlFor="4">Efficient</label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div className="row container">
+                            <div className="col-sm-6">
+                                <h6>Leave a review</h6>
+                                <textarea cols="36" rows="4" maxLength="150" name="long_review" onChange={this.handleInputChange} />
+                            </div>
+                        </div>
+                        <div className="row container">
+                            <div className="col-sm-4">
+                                <button className="btn btn-lg" onClick={this.handleSubmit}>Rate this driver</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            )
         }
 
-        const response = this.state.response;
 
-        return (
-            <div className="App">
-                <AppHeader />
-                <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
-                <section>
-                    <div className="row container">
-                        <div className="col-sm-6">
-                            <h6>Driver Rating</h6>
-                            <p>Leave a rating below:</p>
-                            <div className="star-rating">
-                              <fieldset>
-                                  <input type="radio" id="star5" name="star_rating" value="5" onChange={this.handleInputChange} /><label htmlFor="star5" title="Outstanding">5 stars</label>
-                                  <input type="radio" id="star4" name="star_rating" value="4" onChange={this.handleInputChange} /><label htmlFor="star4" title="Very good">4 stars</label>
-                                  <input type="radio" id="star3" name="star_rating" value="3" onChange={this.handleInputChange} /><label htmlFor="star3" title="Good">3 stars</label>
-                                  <input type="radio" id="star2" name="star_rating" value="2" onChange={this.handleInputChange} /><label htmlFor="star2" title="Bad">2 stars</label>
-                                  <input type="radio" id="star1" name="star_rating" value="1" onChange={this.handleInputChange} /><label htmlFor="star1" title="Very bad">1 stars</label>
-                              </fieldset>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <div className="row container">
-                        <div className="col-sm-12">
-                            <h6>What did you love about the ride?</h6>
-                            <div className="checkbox">
-                                <input type="checkbox" id="1" value="Friendly driver" name="friendly_driver" onChange={this.handleInputChange} /><label htmlFor="1">Friendly driver</label>
-                                <input type="checkbox" id="2" value="Safe ride" name="safe_ride" onChange={this.handleInputChange} /><label htmlFor="2">Safe ride</label>
-                                <input type="checkbox" id="3" value="Great van" name="great_van" onChange={this.handleInputChange} /><label htmlFor="3">Great van</label>
-                                <input type="checkbox" id="4" value="Efficient" name="efficient" onChange={this.handleInputChange} /><label htmlFor="4">Efficient</label>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <div className="row container">
-                        <div className="col-sm-6">
-                            <h6>Leave a review</h6>
-                            <textarea cols="36" rows="4" maxLength="150" name="long_review" onChange={this.handleInputChange} />
-                        </div>
-                    </div>
-                    <div className="row container">
-                        <div className="col-sm-4">
-                            <button className="btn btn-lg" onClick={this.handleSubmit}>Rate this driver</button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        )
     }
 }
 

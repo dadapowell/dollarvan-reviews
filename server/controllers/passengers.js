@@ -12,7 +12,7 @@ module.exports = {
             .then(passenger => res.status(201).send(passenger))
             .catch(error => res.status(400).send(error));
     },
-    
+
     list(req, res) {
         return Passenger
             .findAll({
@@ -24,7 +24,7 @@ module.exports = {
             .then(passengers => res.status(200).send(passengers))
             .catch(error => res.status(400).send(error));
     },
-    
+
     update(req, res) {
         return Passenger
             .findById(req.params.id, {
@@ -52,7 +52,7 @@ module.exports = {
             })
             .catch(error => res.status(400).send(error));
     },
-    
+
     retrieve(req, res) {
         return Passenger
             .findById(req.params.id, {
@@ -71,4 +71,23 @@ module.exports = {
             })
             .catch(error => res.status(400).send(error));
     },
+
+    // findUser(req, res) {
+    //     return Passenger
+    //         .findOne(req.params.id, {
+    //             where: [{
+    //                 email: Review,
+    //                 as: 'Reviews',
+    //             }],
+    //         })
+    //         .then(passenger => {
+    //             if (!passenger){
+    //                 return res.status(404).send({
+    //                     message: "Passenger not found."
+    //                 });
+    //             }
+    //             return res.status(200).send(passenger);
+    //         })
+    //         .catch(error => res.status(400).send(error));
+    // },
 };
