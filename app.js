@@ -20,10 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //  next();
 //});
 
-
-
-
-
 //Require our routes into the application
 require('./server/routes')(app);
 
