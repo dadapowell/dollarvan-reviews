@@ -4,8 +4,8 @@
   "description": "RESTful API for DollarVan.nyc",
   "main": "index.js",
   "engine": {
-      "node": "10.5.x",
-      "npm": "6.4.x"
+    "node": "10.5.x",
+    "npm": "6.4.x"
   },
   "scripts": {
     "dev": "concurrently \"nodemon ./bin/www\" \"cd client && npm start\"",
@@ -34,7 +34,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "react-pin-input": "^0.7.0",
@@ -43,6 +43,6 @@
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.18.4"
   }
 }
