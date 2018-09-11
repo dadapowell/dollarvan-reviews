@@ -24,8 +24,6 @@
   },
   "homepage": "https://github.com/dadapowell/dollarvan-reviews#readme",
   "dependencies": {
-    "auth0-js": "^9.7.3",
-    "auth0-lock": "^11.9.0",
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",
     "bcrypt": "^3.0.0",
