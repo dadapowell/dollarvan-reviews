@@ -4,8 +4,8 @@
   "description": "RESTful API for DollarVan.nyc",
   "main": "index.js",
   "engine": {
-    "node": "10.5.x",
-    "npm": "6.4.x"
+    "node": "^10.5.x",
+    "npm": "^6.4.x"
   },
   "scripts": {
     "dev": "concurrently \"nodemon ./bin/www\" \"cd client && npm start\"",
