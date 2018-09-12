@@ -47,17 +47,19 @@ class Check extends Component {
         let shortReviews = [], safe_ride = 0, great_van = 0, efficient = 0, friendly_driver = 0;
         // count the number of times each review appears
         for (var r = 0; r < reviews.length; r++) {
-            if (reviews[r].short_review.indexOf('Safe ride') >= 0) {
-                safe_ride += 1
-            }
-            if (reviews[r].short_review.indexOf('Great van') >= 0) {
-                great_van += 1
-            }
-            if (reviews[r].short_review.indexOf('Efficient') >= 0) {
-                efficient += 1
-            }
-            if (reviews[r].short_review.indexOf('Friendly driver') >= 0) {
-                friendly_driver += 1
+            if (reviews[r].short_review) {
+                if (reviews[r].short_review.indexOf('Safe ride') >= 0) {
+                    safe_ride += 1
+                }
+                if (reviews[r].short_review.indexOf('Great van') >= 0) {
+                    great_van += 1
+                }
+                if (reviews[r].short_review.indexOf('Efficient') >= 0) {
+                    efficient += 1
+                }
+                if (reviews[r].short_review.indexOf('Friendly driver') >= 0) {
+                    friendly_driver += 1
+                }
             }
         }
         // add this short review to the final array if it has been submitted REVIEW_THRESHOLD number of times
