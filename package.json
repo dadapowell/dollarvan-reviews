@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "RESTful API for DollarVan.nyc",
   "main": "index.js",
-  "engine": {
+  "engines": {
     "node": "^10.5.x",
     "npm": "^6.4.x"
   },
