@@ -79,20 +79,17 @@ module.exports = {
             })
             .then(passenger => {
                 if (!passenger){
-                    return res.status(404).send({
-                        message: "Passenger not found: " + req.params.phone
-                    });
-                    // return Passenger.create({
-                    //     phone: req.params.phone
-                    // })
-                    // .then(newPassenger => {
-                    //     return res.status(200).send({"pid": newPassenger.id});
-                    // })
+                    return Passenger.create({
+                        phone: req.params.phone
+                    })
+                    .then(newPassenger => {
+                        return res.status(200).send({"pid": newPassenger.id});
+                    })
                 } else {
                     return res.status(200).send({"pid": passenger.id});
                 }
             })
-            .catch(error => res.status(400).send(error));
+            .catch(error => res.status(400).send("Not found: " + error));
     },
 
     // findUser(req, res) {

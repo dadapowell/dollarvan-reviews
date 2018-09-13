@@ -9,7 +9,7 @@ export default class AuthLock {
             redirectUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/callback' : 'https://dollarvan-reviews.herokuapp.com/callback',
             responseType: 'token id_token',
             params: {
-                scope: 'openid'
+                scope: 'openid profile'
             }
         },
         theme: {
@@ -54,12 +54,14 @@ export default class AuthLock {
             this.lock.getUserInfo(authResult.accessToken, function(error, profile) {
                 // TO DO: Lookup passenger with profile.name
                 // With SMS signups, profile.name is the phone number
-                console.log(Object.keys(profile));
                 if (profile.name){
                     fetch('/api/passengers/sms/' + profile.name)
                         .then(res => {
-                            localStorage.setItem('passenger_id', res.pid);
-                            console.log(res.pid);
+                            return res.json();
+                        })
+                        .then(resJSON => {
+                            localStorage.setItem('passenger_id', resJSON.pid);
+                            console.log(resJSON.pid);
                         })
                         .catch(err => console.log("Passenger database error: " + err));
                 }

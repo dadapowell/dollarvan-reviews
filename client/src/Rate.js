@@ -32,8 +32,6 @@ class Rate extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        console.log(name + ": " + value);
-
         this.setState({
             [name]: value
         });
@@ -52,9 +50,6 @@ class Rate extends Component {
         if (this.state.efficient) {
             this.state.short_review.push("Efficient");
         }
-        console.log("short_review: " + this.state.short_review.toString());
-        console.log("vanID: " + this.state.response.id);
-        console.log("passengerID: " + this.props.pid);
 
         var details = {
             'star_rating': this.state.star_rating,
@@ -70,7 +65,7 @@ class Rate extends Component {
         }
         formBody = formBody.join("&");
 
-        fetch('/api/reviews/' + this.props.pid + "/" + this.state.response.id, {
+        fetch('/api/reviews/' + this.props.passenger_id + "/" + this.state.response.id, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -78,7 +73,6 @@ class Rate extends Component {
             body: formBody
         })
         .then(res => {
-            console.log("GOOD: " + res);
             this.setState({ redirect: true });
         })
 
@@ -109,7 +103,6 @@ class Rate extends Component {
             return <Redirect push to="/success" />;
         } else {
             const response = this.state.response;
-            console.log(this.props.userinfo);
 
             return (
                 <div className="App">

@@ -17,22 +17,21 @@ const handleAuthentication = (nextState, replace) => {
     auth.handleAuthentication();
   }
 }
-const USER_INFO = localStorage.getItem('id_token');
+const USER_INFO = localStorage.getItem('passenger_id');
 
 const Routes = () => (
     <Router history={history} component={Home}>
         <div>
-            {/* TO DO: Create a page to Select Check or Rate / */}
             <Route exact path="/" render={(props) => <Home auth={auth} {...props} />} />
+
+            <Route path="/rate" render={(props) => <RateId auth={auth} {...props} />} />
+            <Route path="/check" component={CheckId} />
+            
+            <Route path="/success" component={Success} />
             <Route path="/callback" render={(props) => {
                 handleAuthentication(props);
                 return <Callback {...props} />
             }}/>
-            {/* TO DO: Create a page to Input DVID: Rate a Driver / */}
-            <Route path="/rate" render={(props) => <RateId auth={auth} {...props} />} />
-            {/* TO DO: Create a page to Input DVID: Check a Driver / */}
-            <Route path="/check" component={CheckId} />
-            <Route path="/success" component={Success} />
 
         </div>
     </Router>
@@ -40,7 +39,7 @@ const Routes = () => (
 
 const RateId = ({ match }) => (
   <div>
-    <Route path={`${match.url}/:driverId`} render={(props) => <Rate pid="4b232d86-d942-4de8-9358-0c923a0b0e2f" userinfo={USER_INFO}{...props} />} />
+    <Route path={`${match.url}/:driverId`} render={(props) => <Rate passenger_id={USER_INFO}{...props} />} />
 
     {/* TO DO: Create a page for this route /rate */}
     <Route
@@ -55,7 +54,6 @@ const CheckId = ({ match }) => (
   <div>
     <Route path={`${match.url}/:driverId`} component={Check} />
 
-    {/* TO DO: Create a page for this route /check */}
     <Route
       exact
       path={match.url}

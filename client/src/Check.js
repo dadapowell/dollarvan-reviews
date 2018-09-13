@@ -80,7 +80,7 @@ class Check extends Component {
             for (var i = 0; i < reviews.length; i++) {
                 review_count += reviews[i].star_rating;
             }
-            return (review_count / reviews.length)
+            return (Math.round(review_count / reviews.length))
         } else {
             return "0"
         }
