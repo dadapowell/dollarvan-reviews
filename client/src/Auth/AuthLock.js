@@ -55,12 +55,14 @@ export default class AuthLock {
                 // TO DO: Lookup passenger with profile.name
                 // With SMS signups, profile.name is the phone number
                 console.log(Object.keys(profile));
-                fetch('/api/passengers/sms/' + profile.name)
-                    .then(res => {
-                        localStorage.setItem('passenger_id', res.pid);
-                        console.log(res.pid);
-                    })
-                    .catch(err => console.log("Passenger database error: " + err));
+                if (profile.name){
+                    fetch('/api/passengers/sms/' + profile.name)
+                        .then(res => {
+                            localStorage.setItem('passenger_id', res.pid);
+                            console.log(res.pid);
+                        })
+                        .catch(err => console.log("Passenger database error: " + err));
+                }
             })
             // navigate to the home route
             history.replace('/');
