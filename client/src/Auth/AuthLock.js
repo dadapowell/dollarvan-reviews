@@ -13,7 +13,7 @@ export default class AuthLock {
             }
         },
         theme: {
-            logo: 'https://s3.amazonaws.com/dollarvan-logo/dollarvan-logo-icon.png',
+            logo: 'https://dollarvan-reviews.herokuapp.com/images/dollarvan-logo-icon.png',
             primaryColor: '#300075'
         },
         languageDictionary: {
@@ -40,7 +40,7 @@ export default class AuthLock {
         // Add a callback for Lock's authorization_error event
         this.lock.on('authorization_error', (err) => {
             console.log(err);
-            history.replace('/home');
+            history.replace('/');
         })
     }
 
@@ -51,6 +51,17 @@ export default class AuthLock {
             localStorage.setItem('access_token', authResult.accessToken);
             localStorage.setItem('id_token', authResult.idToken);
             localStorage.setItem('expires_at', expiresAt);
+            this.lock.getUserInfo(authResult.accessToken, function(error, profile) {
+                // TO DO: Lookup passenger with profile.name
+                // With SMS signups, profile.name is the phone number
+                console.log(Object.keys(profile));
+                fetch('/api/passengers/sms/' + profile.name)
+                    .then(res => {
+                        localStorage.setItem('passenger_id', res.pid);
+                        console.log(res.pid);
+                    })
+                    .catch(err => console.log("Passenger database error: " + err));
+            })
             // navigate to the home route
             history.replace('/');
         }

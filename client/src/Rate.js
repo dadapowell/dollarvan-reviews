@@ -12,7 +12,6 @@ class Rate extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isLoggedIn: false,
             response: {"Reviews": []},
             star_rating: 0,
             short_review: [],
@@ -88,7 +87,7 @@ class Rate extends Component {
 
     componentDidMount() {
 
-        if (this.props.match.params.driverId && this.state.isLoggedIn) {
+        if (this.props.match.params.driverId) {
             fetch('/api/vans/dvid/' + this.props.match.params.driverId)
                 .then(res => {
                     if (res.status === 404) {
@@ -106,12 +105,11 @@ class Rate extends Component {
     }
 
     render() {
-        if (!this.state.isLoggedIn) {
-            return <Redirect push to="/" />;
-        } else if (this.state.redirect) {
+        if (this.state.redirect) {
             return <Redirect push to="/success" />;
         } else {
             const response = this.state.response;
+            console.log(this.props.userinfo);
 
             return (
                 <div className="App">

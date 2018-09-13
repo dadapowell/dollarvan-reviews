@@ -17,6 +17,7 @@ const handleAuthentication = (nextState, replace) => {
     auth.handleAuthentication();
   }
 }
+const USER_INFO = localStorage.getItem('id_token');
 
 const Routes = () => (
     <Router history={history} component={Home}>
@@ -39,7 +40,7 @@ const Routes = () => (
 
 const RateId = ({ match }) => (
   <div>
-    <Route path={`${match.url}/:driverId`} render={(props) => <Rate pid="4b232d86-d942-4de8-9358-0c923a0b0e2f"{...props} />} />
+    <Route path={`${match.url}/:driverId`} render={(props) => <Rate pid="4b232d86-d942-4de8-9358-0c923a0b0e2f" userinfo={USER_INFO}{...props} />} />
 
     {/* TO DO: Create a page for this route /rate */}
     <Route

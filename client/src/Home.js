@@ -17,7 +17,13 @@ class Home extends Component {
     const { isAuthenticated } = this.props.auth;
     return (
         <div className="App">
-            <AppHeader />
+            {
+                isAuthenticated() && <AppHeader isLoggedIn={true} auth={this.props.auth} />
+            }
+            {
+                !isAuthenticated() && <AppHeader isLoggedIn={false} />
+            }
+
             <section className="app-blue text-center" id="Home">
                 <div className="mx-auto row container text-center">
                     <div className="mx-auto col-sm-6">

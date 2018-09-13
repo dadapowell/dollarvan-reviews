@@ -39,6 +39,7 @@ module.exports = (app) => {
 
     app.post('/api/passengers', passengersController.create);
     app.get('/api/passengers/:id', passengersController.retrieve);
+    app.get('/api/passengers/sms/:phone', passengersController.retrieveByPhone);
     app.get('/api/passengers', passengersController.list);
     app.put('/api/passengers/:id', passengersController.update);
 

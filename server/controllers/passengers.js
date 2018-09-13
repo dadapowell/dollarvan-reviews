@@ -72,6 +72,29 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
+    retrieveByPhone(req, res) {
+        return Passenger
+            .findOne({
+                where: [{phone: req.params.phone}]
+            })
+            .then(passenger => {
+                if (!passenger){
+                    return res.status(404).send({
+                        message: "Passenger not found: " + req.params.phone
+                    });
+                    // return Passenger.create({
+                    //     phone: req.params.phone
+                    // })
+                    // .then(newPassenger => {
+                    //     return res.status(200).send({"pid": newPassenger.id});
+                    // })
+                } else {
+                    return res.status(200).send({"pid": passenger.id});
+                }
+            })
+            .catch(error => res.status(400).send(error));
+    },
+
     // findUser(req, res) {
     //     return Passenger
     //         .findOne(req.params.id, {
