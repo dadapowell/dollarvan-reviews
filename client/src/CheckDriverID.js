@@ -44,7 +44,7 @@ class CheckDriverID extends Component {
                         </div>
                     </div>
                 </section>
-                <section className="pb-5">
+                <section className="pb-5" style={{background: "#fff"}}>
                     <div className="container">
                         <div className="mx-auto col-md-5">
                             <PinInput
@@ -56,7 +56,7 @@ class CheckDriverID extends Component {
                             />
                         </div>
                     </div>
-                    <div className="container text-center">
+                    <div className="container text-center" style={{background: "#fff"}}>
                         <div className="mx-auto col-md-5">
                             {
                                 !this.state.allowSubmit &&

@@ -11,10 +11,10 @@ class AppHeader extends Component {
 
             <header className="App-header">
                 <div className="row">
-                    <div className="col-10">
+                    <div className="col-8">
                         <h1 className="App-title"><Link to="/">DollarVan<span className="logo-weight-normal">.nyc</span></Link></h1>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4 logout">
                         {this.props.isLoggedIn &&
                             <a style={{ cursor: 'pointer' }} onClick={this.logout}>Logout</a>
                         }

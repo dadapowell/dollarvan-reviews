@@ -96,11 +96,17 @@ class Check extends Component {
 
     render() {
         const response = this.state.response;
+        const { isAuthenticated } = this.props.auth;
 
         /* TO DO: hide components for invalid DVID */
         return (
           <div className="App">
-            <AppHeader />
+              {
+                  isAuthenticated() && <AppHeader isLoggedIn={true} auth={this.props.auth} />
+              }
+              {
+                  !isAuthenticated() && <AppHeader isLoggedIn={false} auth={false} />
+              }
             <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
             <StarRating rating={this.calculateStarRating(response.Reviews)} reviews={response.Reviews.length} />
             <ShortReview comments={this.showShortReviews(response.Reviews)} />

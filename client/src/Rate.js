@@ -103,10 +103,16 @@ class Rate extends Component {
             return <Redirect push to="/success" />;
         } else {
             const response = this.state.response;
+            const { isAuthenticated } = this.props.auth;
 
             return (
                 <div className="App">
-                    <AppHeader />
+                    {
+                        isAuthenticated() && <AppHeader isLoggedIn={true} auth={this.props.auth} />
+                    }
+                    {
+                        !isAuthenticated() && <AppHeader isLoggedIn={false} />
+                    }
                     <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
                     <section>
                         <div className="row container">

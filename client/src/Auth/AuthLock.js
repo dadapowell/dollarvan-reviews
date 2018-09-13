@@ -52,8 +52,8 @@ export default class AuthLock {
             localStorage.setItem('id_token', authResult.idToken);
             localStorage.setItem('expires_at', expiresAt);
             this.lock.getUserInfo(authResult.accessToken, function(error, profile) {
-                // TO DO: Lookup passenger with profile.name
-                // With SMS signups, profile.name is the phone number
+                // Lookup passenger with profile.name, or create passenger if not found
+                // With SMS signups, profile.name is the phone number, e.g. +19545555555
                 if (profile.name){
                     fetch('/api/passengers/sms/' + profile.name)
                         .then(res => {
@@ -66,8 +66,9 @@ export default class AuthLock {
                         .catch(err => console.log("Passenger database error: " + err));
                 }
             })
-            // navigate to the home route
-            history.replace('/');
+            // navigate to the RateDriverID route
+            // this works because we only login from the Rate a driver button
+            history.replace('/rate');
         }
     }
 
