@@ -101,16 +101,24 @@ class Check extends Component {
         /* TO DO: hide components for invalid DVID */
         return (
           <div className="App">
+
               {
                   isAuthenticated() && <AppHeader isLoggedIn={true} auth={this.props.auth} />
               }
               {
                   !isAuthenticated() && <AppHeader isLoggedIn={false} auth={false} />
               }
-            <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
-            <StarRating rating={this.calculateStarRating(response.Reviews)} reviews={response.Reviews.length} />
-            <ShortReview comments={this.showShortReviews(response.Reviews)} />
-            <LongReview reviews={this.showLongReviews(response.Reviews)} />
+              <section id="Driver">
+                  <div className="container">
+                      <div className="mx-auto col-offset-3 col-lg-6">
+                          <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
+                          <StarRating rating={this.calculateStarRating(response.Reviews)} reviews={response.Reviews.length} />
+                          <ShortReview comments={this.showShortReviews(response.Reviews)} />
+                          <LongReview reviews={this.showLongReviews(response.Reviews)} />
+                      </div>
+                  </div>
+              </section>
+
 
           </div>
         )
