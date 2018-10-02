@@ -104,6 +104,7 @@ class Rate extends Component {
         } else {
             const response = this.state.response;
             const { isAuthenticated } = this.props.auth;
+            console.log("PASSENGER ID: " + this.props.passenger_id);
 
             return (
                 <div className="App">

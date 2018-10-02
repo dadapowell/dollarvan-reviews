@@ -43,10 +43,6 @@ export default class AuthLock {
             console.log(err);
             history.replace('/');
         });
-        this.lock.on('hide', (err) => {
-            console.log("hiding replace");
-            history.replace('/');
-        })
     }
 
     setSession(authResult) {
@@ -67,13 +63,16 @@ export default class AuthLock {
                         .then(resJSON => {
                             localStorage.setItem('passenger_id', resJSON.pid);
                             console.log("setSession -> get user info: " + resJSON.pid);
+
                         })
                         .catch(err => console.log("Passenger database error: " + err));
                 }
             })
+            this.lock.hide();
             // navigate to the RateDriverID route
             // this works because we only login from the Rate a driver button
             history.replace('/rate');
+
         }
     }
 
