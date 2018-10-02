@@ -101,6 +101,8 @@ class Rate extends Component {
     render() {
         if (this.state.redirect) {
             return <Redirect push to="/success" />;
+        } else if (!this.props.auth.isAuthenticated()) {
+            return <Redirect push to="/" />;
         } else {
             const response = this.state.response;
             const { isAuthenticated } = this.props.auth;
@@ -113,10 +115,16 @@ class Rate extends Component {
                     {
                         !isAuthenticated() && <AppHeader isLoggedIn={false} />
                     }
-                    <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
-                    <section>
-                        <div className="row container">
-                            <div className="col-sm-6">
+                    <div className="app-light-gray pt-1">
+                        <div className="container">
+                            <div className="mx-auto col-offset-3 col-lg-6">
+                                <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
+                            </div>
+                        </div>
+                    </div>
+                    <section className="container">
+                        <div className="mx-auto col-offset-3 col-lg-6">
+                            <div className="container">
                                 <h6>Driver Rating</h6>
                                 <p>Leave a rating below:</p>
                                 <div className="star-rating">
@@ -131,9 +139,9 @@ class Rate extends Component {
                             </div>
                         </div>
                     </section>
-                    <section>
-                        <div className="row container">
-                            <div className="col-sm-12">
+                    <section className="container">
+                        <div className="mx-auto col-offset-3 col-lg-6">
+                            <div className="container">
                                 <h6>What did you love about the ride?</h6>
                                 <div className="checkbox">
                                     <input type="checkbox" id="1" value="Friendly driver" name="friendly_driver" onChange={this.handleInputChange} /><label htmlFor="1">Friendly driver</label>
@@ -144,17 +152,21 @@ class Rate extends Component {
                             </div>
                         </div>
                     </section>
-                    <section>
-                        <div className="row container">
-                            <div className="col-sm-6">
+                    <section className="container">
+                        <div className="mx-auto col-offset-3 col-lg-6">
+                            <div className="container">
                                 <h6>Leave a review</h6>
                                 <textarea cols="36" rows="4" maxLength="150" name="long_review" onChange={this.handleInputChange} />
                             </div>
+
                         </div>
-                        <div className="row container">
-                            <div className="col-sm-4">
+                    </section>
+                    <section className="container">
+                        <div className="mx-auto col-offset-3 col-lg-6">
+                            <div className="container">
                                 <button className="btn btn-lg" onClick={this.handleSubmit}>Rate this driver</button>
                             </div>
+
                         </div>
                     </section>
                 </div>

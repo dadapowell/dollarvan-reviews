@@ -110,14 +110,23 @@ class Check extends Component {
                   !isAuthenticated() && <AppHeader isLoggedIn={false} auth={false} />
               }
               <section id="Driver">
-                  <div className="container">
-                      <div className="mx-auto col-offset-3 col-lg-6">
-                          <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
-                          <StarRating rating={this.calculateStarRating(response.Reviews)} reviews={response.Reviews.length} />
-                          <ShortReview comments={this.showShortReviews(response.Reviews)} />
-                          <LongReview reviews={this.showLongReviews(response.Reviews)} />
-                          <Link to="/" className="btn btn-lg">Back to homepage</Link>
+                  <div>
+                      <div className="app-light-gray pt-1">
+                          <div className="container">
+                              <div className="mx-auto col-offset-3 col-lg-6">
+                                  <DriverInfo name={response.driver_name} dvid={response.dollarvan_id} picture={logo} />
+                              </div>
+                          </div>
                       </div>
+                      <div className="container">
+                          <div className="mx-auto col-offset-3 col-lg-6">
+                              <StarRating rating={this.calculateStarRating(response.Reviews)} reviews={response.Reviews.length} />
+                              <ShortReview comments={this.showShortReviews(response.Reviews)} />
+                              <LongReview reviews={this.showLongReviews(response.Reviews)} />
+                              <Link to="/" className="btn btn-lg mb-3">Back to homepage</Link>
+                          </div>
+                      </div>
+
                   </div>
               </section>
 

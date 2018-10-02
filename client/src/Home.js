@@ -12,11 +12,28 @@ class Home extends Component {
   logout = () => {
     this.props.auth.logout();
   }
+  componentDidMount() {
+      window.onresize = () => {
+          let elem = document.querySelector('.app-dark-gray');
+          let blueDiv = document.querySelector('.app-blue');
+          let headerDiv = document.querySelector('.App-header');
+          let totalOffset = blueDiv.clientHeight + headerDiv.clientHeight;
+          elem.style.height = window.innerHeight - totalOffset + "px";
+          console.log(window.innerHeight + " - " + totalOffset + " = " + elem.clientHeight);
+          console.log("App blue: " + blueDiv.clientHeight + ", Header: " + headerDiv.clientHeight);
+      }
+      var event = document.createEvent('HTMLEvents');
+      event.initEvent('resize', true, false);
+      window.dispatchEvent(event);
+
+  }
   render() {
     // calls the isAuthenticated method in authentication service
     const { isAuthenticated } = this.props.auth;
     return (
+
         <div className="App">
+
             {
                 isAuthenticated() && <AppHeader isLoggedIn={true} auth={this.props.auth} />
             }

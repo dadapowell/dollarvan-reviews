@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class DriverInfo extends Component {
     render() {
         return (
-            <section className="app-light-gray">
+            <section>
                 <div className="row container">
                     <div className="col-sm-9">
                         <h4 className="driver_name">{this.props.name}</h4>

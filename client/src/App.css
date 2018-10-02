@@ -47,7 +47,9 @@ section {
   padding-top: 8px;
   padding-bottom: 16px;
 }
-
+section#Driver {
+    padding-top: 0;
+}
 .driver_name {
   color: #300075;
 }
