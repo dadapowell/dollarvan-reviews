@@ -18,7 +18,6 @@ const handleAuthentication = (nextState, replace) => {
     auth.handleAuthentication();
   }
 }
-const USER_INFO = localStorage.getItem('passenger_id');
 
 const Routes = () => (
     <Router history={history}>
@@ -60,25 +59,25 @@ const Routes = () => (
 
 const RateId = ({ match }) => (
   <div>
-    <Route path={`${match.url}/:driverId`} render={(props) => <Rate auth={auth} passenger_id={USER_INFO}{...props} />} />
+    <Route path={`${match.url}/:driverId`} render={(props) => <Rate auth={auth} passenger_id={localStorage.getItem('passenger_id')}{...props} />} />
 
     {/* TO DO: Create a page for this route /rate */}
     <Route
       exact
       path={match.url}
-      render={(props) => <RateDriverID auth={auth} passenger_id={USER_INFO}{...props} />}
+      render={(props) => <RateDriverID auth={auth} passenger_id={localStorage.getItem('passenger_id')}{...props} />}
     />
   </div>
 );
 
 const CheckId = ({ match }) => (
   <div>
-    <Route path={`${match.url}/:driverId`} render={(props) => <Check auth={auth} passenger_id={USER_INFO}{...props} />} />
+    <Route path={`${match.url}/:driverId`} render={(props) => <Check auth={auth} passenger_id={localStorage.getItem('passenger_id')}{...props} />} />
 
     <Route
       exact
       path={match.url}
-      render={(props) => <CheckDriverID auth={auth} passenger_id={USER_INFO}{...props} />}
+      render={(props) => <CheckDriverID auth={auth} passenger_id={localStorage.getItem('passenger_id')}{...props} />}
     />
   </div>
 );
