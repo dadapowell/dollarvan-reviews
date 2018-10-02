@@ -50,7 +50,7 @@ class Home extends Component {
                 </div>
                 <div className="mx-auto row" id="app-blue-gray">
                     <div className="col-sm-12">
-                        <img src="/images/dv-van.jpg" alt="Dollar Van icon" />
+                        <img src="/images/dv-van.jpg" alt="Dollar Van icon" height="138" />
                     </div>
                 </div>
             </section>
