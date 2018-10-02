@@ -62,12 +62,14 @@ export default class AuthLock {
                         })
                         .then(resJSON => {
                             localStorage.setItem('passenger_id', resJSON.pid);
-                            console.log("setSession -> get user info: " + resJSON.pid);
 
                         })
                         .catch(err => console.log("Passenger database error: " + err));
                 }
             })
+            // this is necessary because we have closable set to false
+            // and the widget does not autoclose when you login from a
+            // "previously logged in" state
             this.lock.hide();
             // navigate to the RateDriverID route
             // this works because we only login from the Rate a driver button

@@ -15,7 +15,6 @@ class Home extends Component {
   render() {
     // calls the isAuthenticated method in authentication service
     const { isAuthenticated } = this.props.auth;
-    console.log("Home props: " + isAuthenticated());
     return (
         <div className="App">
             {
