@@ -6,7 +6,7 @@ export default class AuthLock {
     lock = new Auth0LockPasswordless('Pz8H4pSd8C5ucR1XB0ksssbPNqKuRQDj', 'dollarvan.auth0.com', {
         autoclose: true,
         auth: {
-            redirectUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/callback' : 'https://dollarvan-reviews.herokuapp.com/callback',
+            redirectUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/callback' : 'https://app.dollarvan.nyc/callback',
             responseType: 'token id_token',
             params: {
                 scope: 'openid profile'
@@ -20,7 +20,8 @@ export default class AuthLock {
             title: 'DollarVan.nyc',
             passwordlessSMSInstructions: 'To leave a driver comment, you need to create an account.',
             phoneNumberInputPlaceholder: 'enter your phone number'
-        }
+        },
+        closable: false
     });
 
     constructor() {
@@ -40,6 +41,10 @@ export default class AuthLock {
         // Add a callback for Lock's authorization_error event
         this.lock.on('authorization_error', (err) => {
             console.log(err);
+            history.replace('/');
+        });
+        this.lock.on('hide', (err) => {
+            console.log("hiding replace");
             history.replace('/');
         })
     }
@@ -61,7 +66,7 @@ export default class AuthLock {
                         })
                         .then(resJSON => {
                             localStorage.setItem('passenger_id', resJSON.pid);
-                            console.log(resJSON.pid);
+                            console.log("setSession -> get user info: " + resJSON.pid);
                         })
                         .catch(err => console.log("Passenger database error: " + err));
                 }

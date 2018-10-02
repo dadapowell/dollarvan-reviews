@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import AppHeader from './AppHeader.js';
 import DriverInfo from './DriverInfo.js';
 import StarRating from './StarRating.js';
@@ -115,6 +116,7 @@ class Check extends Component {
                           <StarRating rating={this.calculateStarRating(response.Reviews)} reviews={response.Reviews.length} />
                           <ShortReview comments={this.showShortReviews(response.Reviews)} />
                           <LongReview reviews={this.showLongReviews(response.Reviews)} />
+                          <Link to="/" className="btn btn-lg">Back to homepage</Link>
                       </div>
                   </div>
               </section>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, Router, Switch, Redirect } from 'react-router-dom';
 import Home from './Home';
 import Rate from './Rate';
 import Check from './Check';
@@ -21,7 +21,7 @@ const handleAuthentication = (nextState, replace) => {
 const USER_INFO = localStorage.getItem('passenger_id');
 
 const Routes = () => (
-    <Router history={history} component={Home}>
+    <Router history={history}>
         <div>
 
             <Route render={({ location }) => (
@@ -33,6 +33,7 @@ const Routes = () => (
                           key={location.key}
                         >
                             <Switch location={location}>
+                                <Redirect from="/defaultsite" to="/" />
                                 <Route exact path="/" render={(props) => <Home auth={auth} {...props} />} />
 
                                 <Route path="/rate" render={(props) => <RateId auth={auth} {...props} />} />

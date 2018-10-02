@@ -28,7 +28,6 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client/build')));
 
     // Handle React routing, return all requests to React app
-    app.get('/defaultsite', (req, res) => res.status(200).sendFile(path.join(__dirname, 'client/build', 'index.html')));
     app.get('*', (req, res) => res.status(200).sendFile(path.join(__dirname, 'client/build', 'index.html')));
 } else {
     app.get('*', (req, res) => res.status(200).send({message: "good to go"}));
