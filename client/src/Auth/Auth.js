@@ -5,10 +5,10 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'dollarvan.auth0.com',
     clientID: 'Pz8H4pSd8C5ucR1XB0ksssbPNqKuRQDj',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/callback' : 'https://app.dollarvan.nyc/callback',
     responseType: 'token id_token',
     audience: 'https://dollarvan.auth0.com/userinfo',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor() {
@@ -21,9 +21,9 @@ export default class Auth {
       this.auth0.parseHash((err, authResult) => {
           if (authResult && authResult.accessToken && authResult.idToken) {
               this.setSession(authResult);
-              history.replace('/home');
+              // history.replace('/');
           } else if (err) {
-              history.replace('/home');
+              history.replace('/');
               console.log(err);
           }
     });
@@ -40,7 +40,7 @@ export default class Auth {
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
       // navigate to the home route
-      history.replace('/home');
+      history.replace('/rate');
   }
 
   logout() {
@@ -49,7 +49,7 @@ export default class Auth {
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
       // navigate to the home route
-      history.replace('/home');
+      history.replace('/');
   }
 
   isAuthenticated() {

@@ -7,11 +7,13 @@ import Success from './Success';
 import CheckDriverID from './CheckDriverID';
 import RateDriverID from './RateDriverID';
 import Callback from './Callback';
-import AuthLock from './Auth/AuthLock';
+// import AuthLock from './Auth/AuthLock';
+import Auth from './Auth/Auth';
 import history from './history';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-const auth = new AuthLock();
+// const auth = new AuthLock();
+const auth = new Auth();
 
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
