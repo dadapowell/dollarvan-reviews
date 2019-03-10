@@ -3,6 +3,7 @@ import AppHeader from './AppHeader.js';
 import { Link, Redirect } from 'react-router-dom';
 import PinInput from 'react-pin-input';
 import './CheckDriverID.css';
+import ReactGA from 'react-ga';
 
 class RateDriverID extends Component {
 
@@ -26,6 +27,11 @@ class RateDriverID extends Component {
 
     handleSubmit(event) {
 
+    }
+
+    componentDidMount () {
+      ReactGA.initialize('UA-98486441-2');
+      ReactGA.pageview('/rate');
     }
 
     render() {

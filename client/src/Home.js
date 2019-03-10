@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import AppHeader from './AppHeader';
 import './Home.css';
+import ReactGA from 'react-ga';
 
 class Home extends Component {
   // calls the login method in authentication service
@@ -13,6 +14,9 @@ class Home extends Component {
     this.props.auth.logout();
   }
   componentDidMount() {
+      ReactGA.initialize('UA-98486441-2');
+      ReactGA.pageview('/');
+
       window.onresize = () => {
           let elem = document.querySelector('.app-dark-gray');
           let blueDiv = document.querySelector('.app-blue');

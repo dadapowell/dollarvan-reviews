@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import AppHeader from './AppHeader';
 import DriverInfo from './DriverInfo';
 import './Rate.css';
+import ReactGA from 'react-ga';
 
 /* replace the logo */
 import logo from './dollarvan-logo-icon.png';
@@ -82,6 +83,9 @@ class Rate extends Component {
     componentDidMount() {
 
         if (this.props.match.params.driverId) {
+            ReactGA.initialize('UA-98486441-2');
+            ReactGA.pageview(`/rate/${this.props.match.params.driverId}`);
+
             fetch('/api/vans/dvid/' + this.props.match.params.driverId)
                 .then(res => {
                     if (res.status === 404) {

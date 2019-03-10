@@ -3,6 +3,9 @@ import AppHeader from './AppHeader.js';
 import { Link } from 'react-router-dom';
 import PinInput from 'react-pin-input';
 import './CheckDriverID.css';
+import ReactGA from 'react-ga';
+
+
 
 class CheckDriverID extends Component {
 
@@ -26,6 +29,11 @@ class CheckDriverID extends Component {
 
     handleSubmit(event) {
 
+    }
+
+    componentDidMount () {
+      ReactGA.initialize('UA-98486441-2');
+      ReactGA.pageview('/check');
     }
 
     render() {

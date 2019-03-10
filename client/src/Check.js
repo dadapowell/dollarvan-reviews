@@ -5,6 +5,7 @@ import DriverInfo from './DriverInfo.js';
 import StarRating from './StarRating.js';
 import ShortReview from './ShortReview.js';
 import LongReview from './LongReview.js';
+import ReactGA from 'react-ga';
 /* replace the logo */
 import logo from './dollarvan-logo-icon.png';
 
@@ -21,7 +22,12 @@ class Check extends Component {
     /* TO DO: add isLoggedIn state */
     componentDidMount() {
 
+
+
         if (this.props.match.params.driverId) {
+            ReactGA.initialize('UA-98486441-2');
+            ReactGA.pageview(`/check/${this.props.match.params.driverId}`);
+            
             fetch('/api/vans/dvid/' + this.props.match.params.driverId)
                 .then(res => {
                     if (res.status === 404) {
