@@ -77,6 +77,11 @@ class Rate extends Component {
             this.setState({ redirect: true });
         })
 
+        ReactGA.event({
+          category: 'Passenger',
+          action: 'left review'
+        });
+
         event.preventDefault();
     }
 
